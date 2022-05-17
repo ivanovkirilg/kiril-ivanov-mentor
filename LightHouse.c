@@ -19,9 +19,10 @@ int main()
                 }
             }
 
-            putchar('\r');
             fflush(stdout);
             sleep(1);
+
+            putchar('\r');
         }
     }
 
