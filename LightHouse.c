@@ -9,14 +9,7 @@ int main()
         {
             for (int j = 0; j < 10; j++)
             {
-                if (i == j)
-                {
-                    putchar('*');
-                }
-                else
-                {
-                    putchar('.');
-                }
+                putchar((i == j) ? '*' : '.');
             }
 
             fflush(stdout);
