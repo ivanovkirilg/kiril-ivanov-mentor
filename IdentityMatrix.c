@@ -6,7 +6,20 @@ void test_id_matrix(const int (*matrix)[5], bool is_rect, bool expected);
 
 bool is_identity_matrix(int rows, int cols, const int matrix[rows][cols])
 {
-    return false;
+    for (int i = 0; i < rows; i++)
+    {
+        for (int j = 0; j < cols; j++)
+        {
+            const int required_value = (i == j) ? 1 : 0;
+
+            if (matrix[i][j] != required_value)
+            {
+                return false;
+            }
+        }
+    }
+
+    return true;
 }
 
 int main()
