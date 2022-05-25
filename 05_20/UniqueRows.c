@@ -49,7 +49,7 @@ int count_unique_rows(int rows, int cols, const int matrix[rows][cols])
         return -1;
     }
 
-    int nr_of_unique_rows = 0;
+    int nr_of_unique_rows = rows;
     uint64_t *cached_rows = calloc(rows, sizeof(uint64_t));
 
     for (int i = 0; i < rows; i++)
@@ -58,8 +58,6 @@ int count_unique_rows(int rows, int cols, const int matrix[rows][cols])
         {
             cached_rows[i] ^= (uint64_t) (matrix[i][j]) << j;
         }
-
-        nr_of_unique_rows++;
 
         for (int j = 0; j < i; j++)
         {

@@ -55,12 +55,10 @@ bool rows_equal(int size, const int left[size], const int right[size])
 
 int count_unique_rows_naive(int rows, int cols, const int matrix[rows][cols])
 {
-    int nr_of_unique_rows = 0;
+    int nr_of_unique_rows = rows;
 
     for (int i = 0; i < rows; i++)
     {
-        nr_of_unique_rows++;
-
         for (int j = 0; j < i; j++)
         {
             if (rows_equal(cols, matrix[i], matrix[j]))
