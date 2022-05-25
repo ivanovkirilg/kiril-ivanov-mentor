@@ -18,17 +18,17 @@ void display_matrix(int size, const int matrix[][size]);
 int main()
 {
     int left_matrix[MATRIX_SIZE][MATRIX_SIZE] = {
-        { 1, 3, 5, 7 },
-        { -2, -4, -8, -16},
-        { 3, 900, 60, 21 },
-        { 4, 0, -4, 0 }
+        { 1,  3,   5,  7   },
+        { -2, -4,  -8, -16 },
+        { 3,  900, 60, 21  },
+        { 4,  0,   -4, 0   }
     };
 
     int right_matrix[MATRIX_SIZE][MATRIX_SIZE] = {
-        { -2, -4, -8, -16},
-        { 1, 3, 5, 7 },
-        { 4, 0, -4, 0 },
-        { 3, 900, 60, 21 }
+        { -2, -4,  -8, -16 },
+        { 1,  3,   5,  7   },
+        { 4,  0,   -4, 0   },
+        { 3,  900, 60, 21  }
     };
 
     int output_matrix[MATRIX_SIZE][MATRIX_SIZE] = {0};
