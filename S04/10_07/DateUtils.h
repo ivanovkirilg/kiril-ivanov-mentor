@@ -42,7 +42,7 @@ enum Month
 void printDate(const struct Date *date);
 
 bool isLeapYear(int year);
-enum DateValidation isValidDate(const struct Date *date);
+enum DateValidation validateDate(const struct Date *date);
 
 
 #endif // KIRIL_IVANOV_MENTOR_S04_10_07_DATE_UTILS
