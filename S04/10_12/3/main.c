@@ -7,36 +7,41 @@
 
 #include "DynArray.h"
 
-#define FATAL_ERROR 1
-
 int main()
 {
-    struct DynArray numbers = {0};
     Error error = NO_ERROR;
+    struct DynArray numbers = {0};
 
-    error = resize(&numbers, 5);
+    error = DynArr_resize(&numbers, 5);
 
-    if (error != NO_ERROR)
+    for (size_t i = 0; (i < numbers.size) && (!error); i++)
+    {
+        int res = scanf(" %d", &numbers.data[i]);
+
+        if (res == 0) // Nothing was successfully read
+        {
+            error = INPUT_ERROR;
+        }
+    }
+
+    if (!error)
+    {
+        error = DynArr_resize(&numbers, 2);
+    }
+
+    if (!error)
+    {
+        for (size_t i = 0; i < numbers.size; i++)
+        {
+            printf("%d ", numbers.data[i]);
+        }
+    }
+
+    if (error)
     {
         printf("Program encountered fatal error.\n");
-        return FATAL_ERROR;
+        return SYSTEM_ERROR;
     }
 
-    for (size_t i = 0; i < numbers.size; i++)
-    {
-        scanf(" %d", &numbers.data[i]);
-    }
-
-    error = resize(&numbers, 2);
-
-    if (error != NO_ERROR)
-    {
-        printf("Program encountered fatal error.\n");
-        return FATAL_ERROR;
-    }
-
-    for (size_t i = 0; i < numbers.size; i++)
-    {
-        printf("%d ", numbers.data[i]);
-    }
+    return NO_ERROR;
 }

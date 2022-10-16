@@ -3,17 +3,26 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-Error resize(struct DynArray *self, size_t newSize)
+Error DynArr_resize(struct DynArray *self, size_t newSize)
 {
-    self->data = realloc(self->data, newSize * sizeof(elem_t));
+    Error err = NO_ERROR;
+    CHECK_NULL_PARAM(self, err);
 
-    if (self->data == NULL)
+    if (!err)
     {
-        fprintf(stderr, "%s: allocation failed.\n", __func__);
-        self->size = 0;
-        return ALLOCATION_ERROR;
+        self->data = realloc(self->data, newSize * sizeof(elem_t));
+
+        if (self->data == NULL)
+        {
+            fprintf(stderr, "%s: allocation failed.\n", __func__);
+            self->size = 0;
+            err = ALLOCATION_ERROR;
+        }
+        else
+        {
+            self->size = newSize;
+        }
     }
 
-    self->size = newSize;
-    return NO_ERROR;
+    return err;
 }
